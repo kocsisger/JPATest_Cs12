@@ -21,12 +21,6 @@ public class Application {
         entityManager.getTransaction().begin();
         entityManager.persist(customer);
         entityManager.getTransaction().commit();
-
-        System.out.println("Open your browser and navigate to http://localhost:8082/");
-        System.out.println("JDBC URL: jdbc:h2:mem:my_database");
-        System.out.println("User Name: sa");
-        System.out.println("Password: ");
-
     }
 
     private static void startDatabase() throws SQLException {
