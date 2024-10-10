@@ -17,10 +17,8 @@ public class Application {
         entityManager.persist(customer);
         */
 
-        Animal ellyElephant = new Animal("Elly", 9, Animal.GenderType.FEMALE);
-
-        AnimalDAO aDAO = new JPAAnimalDAO();
-        aDAO.saveAnimal(ellyElephant);
+        AnimalUtils aUtils = new AnimalUtils(new JPAAnimalDAO());
+        aUtils.runUtils();
     }
 
     private static void startDatabase() throws SQLException {

@@ -24,7 +24,6 @@ public class JPAAnimalDAO implements AnimalDAO{
                 "SELECT a FROM Animal a", Animal.class);
         List<Animal> animals = query.getResultList();
         return animals;
-
     }
 
     @Override
