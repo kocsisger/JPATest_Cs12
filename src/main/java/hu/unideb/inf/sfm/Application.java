@@ -11,19 +11,16 @@ public class Application {
     public static void main(String[] args) throws SQLException {
         startDatabase();
 
-        final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("br.com.fredericci.pu");
-        final EntityManager entityManager = entityManagerFactory.createEntityManager();
-
-        Customer customer = new Customer();
+       /* Customer customer = new Customer();
         customer.setFirstName("Dennys");
         customer.setLastName("Fredericci");
+        entityManager.persist(customer);
+        */
 
         Animal ellyElephant = new Animal("Elly", 9, Animal.GenderType.FEMALE);
 
-        entityManager.getTransaction().begin();
-        entityManager.persist(customer);
-        entityManager.persist(ellyElephant);
-        entityManager.getTransaction().commit();
+        AnimalDAO aDAO = new JPAAnimalDAO();
+        aDAO.saveAnimal(ellyElephant);
     }
 
     private static void startDatabase() throws SQLException {
