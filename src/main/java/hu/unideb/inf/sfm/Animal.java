@@ -1,8 +1,8 @@
 package hu.unideb.inf.sfm;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import org.hibernate.annotations.Cascade;
+
+import javax.persistence.*;
 
 @Entity
 public class Animal {
@@ -12,6 +12,18 @@ public class Animal {
     private String name;
     private int age;
     private GenderType gender;
+    @ManyToOne
+    @JoinColumn(name = "owner_zooxx")
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
+    private Zoo ownerZoo;
+
+    public Zoo getOwnerZoo() {
+        return ownerZoo;
+    }
+
+    public void setOwnerZoo(Zoo ownerZoo) {
+        this.ownerZoo = ownerZoo;
+    }
 
     public enum GenderType{
         MALE,FEMALE,UNKNOWN;
